@@ -1,28 +1,29 @@
-import ProgressRing from "@/components/ProgressRing";
-import LineChartCard from "@/components/LineChartCard";
+import SectionCard from "@/components/SectionCard";
 
 export default function AnalyticsPage() {
   return (
-    <div className="max-w-6xl mx-auto space-y-16">
-
-      <h1 className="text-3xl font-semibold">
-        Performance Insights
+    <div className="max-w-4xl mx-auto space-y-16">
+      <h1 className="text-4xl font-semibold tracking-tight">
+        Analytics
       </h1>
 
-      <div className="grid grid-cols-2 gap-12">
-        <LineChartCard />
-        <ProgressRing />
-      </div>
+      <SectionCard title="BMI Calculator">
+        <div className="grid grid-cols-2 gap-6">
+          <input
+            placeholder="Height (cm)"
+            className="bg-black/60 p-4 rounded-lg border border-white/10 focus:border-[#F59E0B]/60 outline-none transition"
+          />
+          <input
+            placeholder="Weight (kg)"
+            className="bg-black/60 p-4 rounded-lg border border-white/10 focus:border-[#F59E0B]/60 outline-none transition"
+          />
+        </div>
 
-      <div className="bg-[#121821] p-8 rounded-xl border border-white/5">
-        <p className="text-sm text-white/50">
-          7 Day Performance Trend
-        </p>
-        <h2 className="text-2xl font-semibold mt-3 text-[#FACC15]">
-          Improving
-        </h2>
-      </div>
-
+        <div className="mt-6 text-xl">
+          BMI: <span className="text-[#22C55E] font-semibold">23.4</span>
+        </div>
+        <div className="text-sm text-white/50">Normal Weight</div>
+      </SectionCard>
     </div>
   );
 }

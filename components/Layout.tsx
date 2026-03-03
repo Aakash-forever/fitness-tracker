@@ -8,7 +8,9 @@ export default function Layout({
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      <main className="flex-1 p-8">{children}</main>
+      <main className="flex-1 p-10 bg-[#0E1117]">
+        {children}
+      </main>
     </div>
   );
 }
