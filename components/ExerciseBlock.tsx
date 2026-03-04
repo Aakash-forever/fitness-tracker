@@ -1,21 +1,26 @@
-export default function ExerciseBlock() {
-  const exercises = [
-    {
-      name: "Bench Press",
-      sets: [
-        { reps: 12, weight: 60, drop: false },
-        { reps: 10, weight: 70, drop: false },
-        { reps: 8, weight: 75, drop: true },
-      ],
-    },
-    {
-      name: "Squats",
-      sets: [
-        { reps: 15, weight: 80, drop: false },
-        { reps: 12, weight: 90, drop: false },
-      ],
-    },
-  ];
+type Set = {
+  reps: number;
+  weight: number;
+  drop?: boolean;
+};
+
+export type Exercise = {
+  name: string;
+  sets: Set[];
+};
+
+type ExerciseBlockProps = {
+  exercises: Exercise[];
+};
+
+export default function ExerciseBlock({ exercises }: ExerciseBlockProps) {
+  if (!exercises.length) {
+    return (
+      <div className="bg-[#0F0F0F] p-8 rounded-xl border border-white/10 text-white/60">
+        No exercises yet. Add movements to see them here.
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-10">

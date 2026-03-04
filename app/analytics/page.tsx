@@ -1,6 +1,12 @@
+// This page uses React hooks, so it must be a client component.
+"use client";
+
 import SectionCard from "@/components/SectionCard";
+import { useAnalyticsData } from "./useAnalyticsData";
 
 export default function AnalyticsPage() {
+  const { data } = useAnalyticsData();
+
   return (
     <div className="max-w-4xl mx-auto space-y-16">
       <h1 className="text-4xl font-semibold tracking-tight">
@@ -20,9 +26,9 @@ export default function AnalyticsPage() {
         </div>
 
         <div className="mt-6 text-xl">
-          BMI: <span className="text-[#22C55E] font-semibold">23.4</span>
+          BMI: <span className="text-[#22C55E] font-semibold">{data.bmi}</span>
         </div>
-        <div className="text-sm text-white/50">Normal Weight</div>
+        <div className="text-sm text-white/50">{data.category}</div>
       </SectionCard>
     </div>
   );

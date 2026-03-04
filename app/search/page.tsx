@@ -1,7 +1,12 @@
+// This page uses React hooks, so it must be a client component.
+"use client";
+
 import SectionCard from "@/components/SectionCard";
+import { useSearchData } from "./useSearchData";
 
 export default function SearchPage() {
-  const recent = ["Bench Press", "Deadlift", "VO2 Max", "Zone 2", "Hypertrophy Split"];
+  const { data } = useSearchData();
+  const recent = data.recent;
 
   return (
     <div className="max-w-4xl mx-auto space-y-12">
@@ -17,6 +22,11 @@ export default function SearchPage() {
           />
 
           <div className="grid grid-cols-2 gap-3 text-sm text-white/70">
+            {recent.length === 0 && (
+              <div className="col-span-2 text-white/50">
+                No recent searches yet. They will appear here after users start searching.
+              </div>
+            )}
             {recent.map((item) => (
               <div
                 key={item}
