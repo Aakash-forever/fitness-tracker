@@ -1,4 +1,4 @@
-import Card from "@/components/Card";
+import Card from "@/components/ui/Card";
 import type { ActivityDay } from "./types";
 
 type ActivityMatrixCardProps = {

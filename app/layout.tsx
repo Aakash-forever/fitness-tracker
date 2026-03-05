@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Inter, Sora } from "next/font/google";
-import Layout from "@/components/Layout";
+import Layout from "@/components/layout/Layout";
 
 const inter = Inter({
   subsets: ["latin"],

@@ -2,12 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  LayoutDashboard,
-  Dumbbell,
-  BarChart3,
-  Search,
-} from "lucide-react";
+import {LayoutDashboard, Dumbbell, BarChart3, Search,} from "lucide-react";
 import Logo from "./Logo";
 
 export default function Sidebar() {

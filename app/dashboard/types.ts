@@ -25,4 +25,5 @@ export type DashboardData = {
   weeklyActivity: ActivityDay[];
   weeklyMetrics: WeeklyMetric[];
   tacticalQueue: QueueItem[];
+  userName?: string;
 };

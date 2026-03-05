@@ -1,11 +1,17 @@
-// This page uses React hooks, so it must be a client component.
 "use client";
 
-import SectionCard from "@/components/SectionCard";
-import { useAnalyticsData } from "./useAnalyticsData";
+import SectionCard from "@/components/ui/SectionCard";
+import type { BMIData } from "./types";
+
+const EMPTY_BMI: BMIData = {
+  heightCm: 0,
+  weightKg: 0,
+  bmi: 0,
+  category: "Not calculated",
+};
 
 export default function AnalyticsPage() {
-  const { data } = useAnalyticsData();
+  const data = EMPTY_BMI;
 
   return (
     <div className="max-w-4xl mx-auto space-y-16">

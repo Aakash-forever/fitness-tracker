@@ -1,12 +1,9 @@
-// This page uses React hooks, so it must be a client component.
 "use client";
 
-import SectionCard from "@/components/SectionCard";
-import { useSearchData } from "./useSearchData";
+import SectionCard from "@/components/ui/SectionCard";
 
 export default function SearchPage() {
-  const { data } = useSearchData();
-  const recent = data.recent;
+  const recent: string[] = [];
 
   return (
     <div className="max-w-4xl mx-auto space-y-12">

@@ -1,4 +1,4 @@
-import type { Exercise } from "@/components/ExerciseBlock";
+import type { Exercise } from "@/components/workout/ExerciseBlock";
 
 export type WorkoutData = {
   exercises: Exercise[];

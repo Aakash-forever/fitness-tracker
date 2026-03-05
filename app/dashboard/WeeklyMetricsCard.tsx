@@ -1,4 +1,4 @@
-import Card from "@/components/Card";
+import Card from "@/components/ui/Card";
 import type { WeeklyMetric } from "./types";
 
 type WeeklyMetricsCardProps = {

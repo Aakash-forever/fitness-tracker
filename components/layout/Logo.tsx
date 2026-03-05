@@ -2,7 +2,7 @@ export default function Logo() {
   return (
     <div className="flex items-center gap-3 select-none">
       <div className="relative w-9 h-9">
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#F59E0B] via-[#FFB347] to-[#F97316] blur-[6px] opacity-70" />
+        <div className="absolute inset-0 rounded-xl bg-linear-to-br from-[#F59E0B] via-[#FFB347] to-[#F97316] blur-[6px] opacity-70" />
         <svg
           viewBox="0 0 48 48"
           className="relative z-10 w-9 h-9"

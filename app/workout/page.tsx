@@ -1,11 +1,10 @@
-// This page uses React state/hooks, so it must be a client component.
 "use client";
 
-import ExerciseBlock from "@/components/ExerciseBlock";
-import { useWorkoutData } from "./useWorkoutData";
+import ExerciseBlock from "@/components/workout/ExerciseBlock";
+import type { Exercise } from "@/components/workout/ExerciseBlock";
 
 export default function WorkoutPage() {
-  const { data } = useWorkoutData();
+  const exercises: Exercise[] = [];
 
   return (
     <div className="max-w-5xl mx-auto space-y-16">
@@ -13,7 +12,7 @@ export default function WorkoutPage() {
         Daily Exercise Tracker
       </h1>
 
-      <ExerciseBlock exercises={data.exercises} />
+      <ExerciseBlock exercises={exercises} />
     </div>
   );
 }
