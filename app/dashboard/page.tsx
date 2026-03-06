@@ -1,75 +1,66 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import DailyPerformanceCard from "./DailyPerformanceCard";
 import WeeklyMetricsCard from "./WeeklyMetricsCard";
 import ActivityMatrixCard from "./ActivityMatrixCard";
-import TacticalQueueCard from "./TacticalQueueCard";
 import Loader from "../loading";
-import type { DashboardData } from "./types";
-
-const EMPTY_DATA: DashboardData = {
-  dailyProgress: { score: 0, completed: 0, goal: 0 },
-  weeklyActivity: [
-    { day: "Mon", value: 0 },
-    { day: "Tue", value: 0 },
-    { day: "Wed", value: 0 },
-    { day: "Thu", value: 0 },
-    { day: "Fri", value: 0 },
-    { day: "Sat", value: 0 },
-    { day: "Sun", value: 0 },
-  ],
-  weeklyMetrics: [
-    { label: "Workouts", value: "0" },
-    { label: "Total Volume", value: "0 kg" },
-    { label: "Avg Reps", value: "0" },
-    { label: "Peak Day", value: "—" },
-  ],
-  tacticalQueue: [],
-  userName: "Athlete",
-};
+import DailyLogCard from "./DailyPerformanceCard";
+import { useDashboardState } from "./useDashboardState";
 
 export default function DashboardPage() {
-  const [data, setData] = useState<DashboardData>(EMPTY_DATA);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let alive = true;
-    const saved = localStorage.getItem("dashboardData");
-    if (saved) {
-      setTimeout(() => {
-        if (!alive) return;
-        try {
-          const parsed = JSON.parse(saved) as DashboardData;
-          setData(parsed);
-        } catch {
-          setData(EMPTY_DATA);
-        }
-      }, 0);
-    }
-    setTimeout(() => {
-      if (alive) setLoading(false);
-    }, 0);
-    return () => {
-      alive = false;
-    };
-  }, []);
+  const {
+    userName,
+    setUserName,
+    dailyWorkouts,
+    weeklyActivity,
+    weeklyMetrics,
+    loading,
+    handleDailyUpdate,
+    handleSubmit,
+  } = useDashboardState();
 
   const animate = true;
 
   return (
     <div className="max-w-7xl mx-auto space-y-14">
-      <h1 className="text-4xl font-semibold tracking-tight">Performance Command</h1>
+      <h1 className="text-4xl font-semibold tracking-tight">Performance Dashboard</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-6"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <label className="space-y-2 text-sm text-white/70">
+            <span className="text-white">Name</span>
+            <input
+              className="w-full bg-[#0F1318] border border-white/10 rounded-lg px-3 py-2"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              placeholder="Athlete"
+            />
+          </label>
+        </div>
+
+        <div className="border-t border-white/10 pt-4 space-y-4">
+          <DailyLogCard dailyWorkouts={dailyWorkouts} onUpdate={handleDailyUpdate} />
+        </div>
+
+        <div className="flex items-center justify-end gap-3">
+          <button
+            type="submit"
+            className="px-4 py-2 rounded-lg bg-[#F59E0B] text-black font-semibold hover:brightness-110 transition"
+          >
+            Save dashboard data
+          </button>
+        </div>
+      </form>
+
       {loading ? (
         <Loader />
       ) : (
         <>
-          <p className="text-white/60">Welcome back, {data.userName || "Athlete"}.</p>
+          <p className="text-white/60">Welcome back, {userName || "Athlete"}.</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <DailyPerformanceCard progress={data.dailyProgress} animate={animate} />
-            <WeeklyMetricsCard metrics={data.weeklyMetrics} />
-            <ActivityMatrixCard activity={data.weeklyActivity} animate={animate} />
-            <TacticalQueueCard items={data.tacticalQueue} />
+            <WeeklyMetricsCard metrics={weeklyMetrics} />
+            <ActivityMatrixCard activity={weeklyActivity} animate={animate} />
           </div>
         </>
       )}
