@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏋️ IronLog — Fitness Tracker
+
+A bold, colorful fitness tracking app built with Next.js 14.
+
+## Features
+
+- 📅 **Date-based tracking** — Navigate by week, log workouts per day
+- 💪 **Exercise logging** — Name, sets, reps, and weight per set
+- 🔥 **Drop Sets** — Mark exercises as drop sets with a red badge
+- ⚡ **Supersets** — Pair exercises together with a purple/blue badge
+- ✅ **Set completion** — Check off individual sets as you go
+- 📊 **Live stats** — Volume, reps, sets progress updated in real time
+- 💾 **Persistent storage** — All data saved to localStorage (no backend needed)
+- 📱 **Fully responsive** — Works on mobile and desktop
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 3. Open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js 14** (App Router)
+- **Tailwind CSS** for styling
+- **Lucide React** for icons
+- **date-fns** for date manipulation
+- **localStorage** for data persistence
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How to Use
 
-## Learn More
+1. **Select a date** from the calendar strip at the top
+2. **Add exercises** by clicking the orange button
+3. **Choose muscle group → exercise → set type** in the modal
+4. **Log sets** by entering weight and reps in each row
+5. **Check off sets** as you complete them
+6. **Track progress** via the stats bar above your exercises
 
-To learn more about Next.js, take a look at the following resources:
+## Design
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Bold neon-on-dark aesthetic inspired by sports magazines and arcade UI.
+- Font: Bebas Neue (display) + DM Sans (body)
+- Colors: Electric orange, neon yellow, hot pink, cyan blue
+- Dark background with subtle grid and noise texture
